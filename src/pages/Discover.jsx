@@ -5,9 +5,18 @@ import { genres } from "../assets/constants";
 //Discover alanına türe göre en çok dinlenen şarkıları getirir(api).
 import { useGetTopChartsQuery } from "../redux/services/shazamCore";
 
+import { useDispatch, useSelector } from "react-redux";
+
+
+
 const Discover = () => {
+  const dispatch = useDispatch();
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
+
   const { data, isFetching, error } = useGetTopChartsQuery();
   const genreTitle = "Pop"
+
+  console.log(data)
 
   if(isFetching) return <Loader title="Loading songs..." />
 
@@ -33,6 +42,9 @@ const Discover = () => {
           <SongCard
             key={song.key}
             song={song}
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+            data={data}
             i={i}
           />
         ))}
