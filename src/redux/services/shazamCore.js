@@ -14,7 +14,7 @@ fetch('https://shazam-core.p.rapidapi.com/v1/charts/world', options)
   .catch(err => console.error(err));*/
 
 
-// Yorum satırında buşlunan alanın createApi ile yapılmış versiyonu.
+// Yorum satırında bulunan alanın createApi ile yapılmış versiyonu.
 export const shazamCoreApi = createApi({
   reducerPath: 'shazamCoreApi',
   baseQuery: fetchBaseQuery({
